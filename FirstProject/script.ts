@@ -1,4 +1,4 @@
-class App {
+class App2 {
     first: HTMLInputElement;
     second: HTMLInputElement;
     third: HTMLInputElement;
@@ -19,40 +19,33 @@ class App {
     }
 
     inputs(){
-        const first = (<HTMLInputElement>document.getElementById('first')).value;
-        const second = (<HTMLInputElement>document.getElementById('second')).value;
-        const third = (<HTMLInputElement>document.getElementById('third')).value;
-        const fourth = (<HTMLInputElement>document.getElementById('fourth')).value;
+        this.first =  <HTMLInputElement>document.getElementById("first")
+        this.second = <HTMLInputElement>document.getElementById("second")
+        this.third = <HTMLInputElement>document.getElementById("third")
+        this.fourth = <HTMLInputElement>document.getElementById("fourth")
 
-        const min = (<HTMLInputElement>document.getElementById('min')).value;
-        const max = (<HTMLInputElement>document.getElementById('max')).value;
-        const avg = (<HTMLInputElement>document.getElementById('avg')).value;
-        const sum = (<HTMLInputElement>document.getElementById('sum')).value;
+        this.min = <HTMLInputElement>document.getElementById("min")
+        this.max = <HTMLInputElement>document.getElementById("max")
+        this.avg = <HTMLInputElement>document.getElementById("avg")
+        this.sum = <HTMLInputElement>document.getElementById("sum")
     }
 
     watchInputs(){
-        [first,second,third,fourth].forEach((el)=>{
-            el.addEventListener('change', ()=> updateValues());
+        [this.first, this.second, this.third, this.fourth].forEach((el)=>{
+            el.addEventListener('change', ()=>  this.updateValues());
         })
     }
     updateValues(){
-        const values = [first.value, second.value, third.value, fourth.value]
+        const values = [ this.first.value,  this.second.value,  this.third.value,  this.fourth.value]
         const filteredValues = values.filter((el)=> el !== undefined && el !== "" )
-        min.value = Math.min(...filteredValues);
-        max.value = Math.max(...filteredValues);
+        this.min.value = (Math.min(Number(...filteredValues))).toString();
+        this.max.value = (Math.max(Number(...filteredValues))).toString();
         const sumcurrent = filteredValues.reduce((a, b) => Number(a) + Number(b), 0);
     
-        avg.value = sumcurrent/filteredValues.length;
-        sum.value = sumcurrent;
+        this.avg.value = (sumcurrent/filteredValues.length).toString();
+        this.sum.value = (sumcurrent).toString();
 }
-
-
-
-
-
-
-
 
 }
 
-const Application = new App();
+const Application2 = new App2();
