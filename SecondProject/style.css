@@ -1,0 +1,48 @@
+body {
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0;
+  background-color: rgb(233, 236, 245);
+  font-family: sans-serif;
+}
+
+main {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.drumkit-buttons {
+  width: 750px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: flex-start;
+  margin-bottom: 20px;
+}
+
+.drumkit-buttons button {
+  width: 120px;
+  height: 120px;
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  appearance: none;
+  padding: var(--space-xl) var(--space-4xl);
+  font-size: 10px;
+  font-family: sans-serif;
+  border: 2px black solid;
+  border-radius: 14px;
+  background-color: rgb(78, 71, 71);
+  cursor: pointer;
+  outline: none;
+  color: white;
+  font-size: 100px;
+  text-transform: uppercase;
+  line-height: 0;
+}
