@@ -38,8 +38,8 @@ class App2 {
     updateValues(){
         const values = [ this.first.value,  this.second.value,  this.third.value,  this.fourth.value]
         const filteredValues = values.filter((el)=> el !== undefined && el !== "" )
-        this.min.value = (Math.min(Number(...filteredValues))).toString();
-        this.max.value = (Math.max(Number(...filteredValues))).toString();
+        this.min.value = (Math.min(...filteredValues)).toString();
+        this.max.value = (Math.max(...filteredValues)).toString();
         const sumcurrent = filteredValues.reduce((a, b) => Number(a) + Number(b), 0);
     
         this.avg.value = (sumcurrent/filteredValues.length).toString();

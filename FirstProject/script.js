@@ -25,8 +25,8 @@ var App2 = /** @class */ (function () {
     App2.prototype.updateValues = function () {
         var values = [this.first.value, this.second.value, this.third.value, this.fourth.value];
         var filteredValues = values.filter(function (el) { return el !== undefined && el !== ""; });
-        this.min.value = (Math.min(Number.apply(void 0, filteredValues))).toString();
-        this.max.value = (Math.max(Number.apply(void 0, filteredValues))).toString();
+        this.min.value = (Math.min.apply(Math, filteredValues)).toString();
+        this.max.value = (Math.max.apply(Math, filteredValues)).toString();
         var sumcurrent = filteredValues.reduce(function (a, b) { return Number(a) + Number(b); }, 0);
         this.avg.value = (sumcurrent / filteredValues.length).toString();
         this.sum.value = (sumcurrent).toString();
