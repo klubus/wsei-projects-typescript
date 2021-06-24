@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="drum">
+            <button onclick="playSound();" data-key="q" class="drumb">| Q |</br></br>CLAP</button>
+        </div>
+        <audio src="sounds/clap.wav"  data-sound="clap"></audio>
+
+        <div class="drum">
+            <button onclick="playSound();" class="drumb">| W |</br></br>BOOM</button>
+        </div>
+        <audio src="sounds/boom.wav"  data-sound="boom"></audio>
+
+        <div class="drum">
+            <button onclick="playSound();" class="drumb">| E |</br></br>HIHAT</button>
+        </div>
+        <audio src="sounds/hihat.wav"  data-sound="hihat"></audio>
+
+        <div class="drum">
+            <button onclick="playSound();" class="drumb">| A |</br></br>KICK</button>
+        </div>
+        <audio src="sounds/kick.wav"  data-sound="kick"></audio>
+
+        <div class="drum">
+            <button onclick="playSound();" class="drumb">| S |</br></br>OPENHAT</button>
+        </div>
+        <audio src="sounds/openhat.wav"  data-sound="openhat"></audio>
+
+        <div class="drum">
+            <button onclick="playSound();" class="drumb">| D |</br></br>RIDE</button>
+        </div>
+        <audio src="sounds/ride.wav"  data-sound="ride"></audio>
+
+        <div class="drum">
+            <button onclick="playSound();" class="drumb">| Z |</br></br>SNARE</button>
+        </div>
+        <audio src="sounds/snare.wav"  data-sound="snare"></audio>
+
+        <div class="drum">
+            <button onclick="playSound();" class="drumb">| X |</br></br>TINK</button>
+        </div>
+        <audio src="sounds/tink.wav"  data-sound="tink"></audio>
+
+        <div class="drum">
+            <button onclick="playSound();" class="drumb">| C |</br></br>TOM</button>
+        </div>
+        <audio src="sounds/tom.wav" data-sound="tom"></audio>
+
+        <div class=progress>
+            <label for="prog-bar"></label>
+            <progress class= "progress-bar" id="prog-bar" max="100" value="0" position="relative">
+            </progress>
+        </div>
+
+        <button class="but" id="playChannel1">Play</button>
+        <button class="but" id="playChannel1Record">Record</button>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
