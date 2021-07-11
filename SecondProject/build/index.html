@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,62 +8,90 @@
     <title>Document</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="container">
         <div class="drum">
-            <button onclick="playSound();" data-key="q" class="clapBtn">| Q |</br></br>CLAP</button>
+            <button class="clapBtn">| Q |</br></br>CLAP</button>
         </div>
         <audio src="sounds/clap.wav" class="clap" data-sound="clap"></audio>
 
         <div class="drum">
-            <button onclick="playSound();" class="boomBtn">| W |</br></br>BOOM</button>
+            <button class="boomBtn">| W |</br></br>BOOM</button>
         </div>
         <audio src="sounds/boom.wav" class="boom" data-sound="boom"></audio>
 
         <div class="drum">
-            <button onclick="playSound();" class="hihatBtn">| E |</br></br>HIHAT</button>
+            <button class="hihatBtn">| E |</br></br>HIHAT</button>
         </div>
         <audio src="sounds/hihat.wav" class='hihat' data-sound="hihat"></audio>
 
         <div class="drum">
-            <button onclick="playSound();" class="kickBtn">| A |</br></br>KICK</button>
+            <button class="kickBtn">| A |</br></br>KICK</button>
         </div>
-        <audio src="sounds/kick.wav" class="kick"  data-sound="kick"></audio>
+        <audio src="sounds/kick.wav" class="kick" data-sound="kick"></audio>
 
         <div class="drum">
-            <button onclick="playSound();" class="openhatBtn">| S |</br></br>OPENHAT</button>
+            <button class="openhatBtn">| S |</br></br>OPENHAT</button>
         </div>
-        <audio src="sounds/openhat.wav" class="openhat"  data-sound="openhat"></audio>
+        <audio src="sounds/openhat.wav" class="openhat" data-sound="openhat"></audio>
 
         <div class="drum">
-            <button onclick="playSound();" class="rideBtn">| D |</br></br>RIDE</button>
+            <button class="rideBtn">| D |</br></br>RIDE</button>
         </div>
-        <audio src="sounds/ride.wav"  class="ride" data-sound="ride"></audio>
+        <audio src="sounds/ride.wav" class="ride" data-sound="ride"></audio>
 
         <div class="drum">
-            <button onclick="playSound();" class="snareBtn">| Z |</br></br>SNARE</button>
+            <button class="snareBtn">| Z |</br></br>SNARE</button>
         </div>
-        <audio src="sounds/snare.wav" class="snare"  data-sound="snare"></audio>
+        <audio src="sounds/snare.wav" class="snare" data-sound="snare"></audio>
 
         <div class="drum">
-            <button onclick="playSound();" class="tinkBtn">| X |</br></br>TINK</button>
+            <button class="tinkBtn">| X |</br></br>TINK</button>
         </div>
-        <audio src="sounds/tink.wav"  class="tink" data-sound="tink"></audio>
+        <audio src="sounds/tink.wav" class="tink" data-sound="tink"></audio>
 
         <div class="drum">
-            <button onclick="playSound();" class="tomBtn">| C |</br></br>TOM</button>
+            <button class="tomBtn">| C |</br></br>TOM</button>
         </div>
         <audio src="sounds/tom.wav" class="tom" data-sound="tom"></audio>
 
+    
+
+       
+    </div>
+
+    <section class="channels">
+        <button class="play" id="playChannel1Btn">Play</button>
+        <button class="stop" id="stopChannel1Btn">Stop</button>
+        <button class="record" id="recordChannel1Btn">Record</button>
         <div class=progress>
-            <label for="prog-bar"></label>
-            <progress class= "progress-bar" id="prog-bar" max="100" value="0" position="relative">
+            <progress class="progress-bar" id="progress-bar1" max="100" value="0" position="relative">
             </progress>
         </div>
-
-        <button class="but" id="playChannel1">Play</button>
-        <button class="but" id="playChannel1Record">Record</button>
-    </div>
+        <button class="play" id="playChannel2Btn">Play</button>
+        <button class="stop" id="stopChannel2Btn">Stop</button>
+        <button class="record" id="recordChannel2Btn">Record</button>
+        <div class=progress>
+            <progress class="progress-bar" id="progress-bar2" max="100" value="0" position="relative">
+            </progress>
+        </div>
+        <button class="play" id="playChannel3Btn">Play</button>
+        <button class="stop" id="stopChannel3Btn">Stop</button>
+        <button class="record" id="recordChannel3Btn">Record</button>
+        <div class=progress>
+            <progress class="progress-bar" id="progress-bar3" max="100" value="0" position="relative">
+            </progress>
+        </div>
+        <button class="play" id="playChannel4Btn">Play</button>
+        <button class="stop" id="stopChannel4Btn">Stop</button>
+        <button class="record" id="recordChannel4Btn">Record</button>
+        <div class=progress>
+            <progress class="progress-bar" id="progress-bar4" max="100" value="0" position="relative">
+            </progress>
+        </div>
+    </section>
     <script src="index.js"></script>
 </body>
+
 </html>
