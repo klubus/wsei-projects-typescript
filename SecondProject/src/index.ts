@@ -1,3 +1,5 @@
+
+
 const clapAudioSound:HTMLAudioElement = document.querySelector(".clap");
 const boomAudioSound:HTMLAudioElement = document.querySelector(".boom");
 const hihatAudioSound:HTMLAudioElement = document.querySelector(".hihat");
@@ -8,19 +10,108 @@ const snareAudioSound:HTMLAudioElement = document.querySelector(".snare");
 const tinkAudioSound:HTMLAudioElement = document.querySelector(".tink");
 const tomAudioSound:HTMLAudioElement = document.querySelector(".tom");
 
-const clapBtn: HTMLButtonElement = document.querySelector(".clapBtn");
-console.log(clapAudioSound);
+const allSoundBtns:NodeListOf<HTMLButtonElement> = document.querySelectorAll("#soundBtn");
+const allPlayBtns:NodeListOf<HTMLButtonElement> = document.querySelectorAll(".play");
+const allRecordBtns:NodeListOf<HTMLButtonElement> = document.querySelectorAll(".record");
+const allStopBtns:NodeListOf<HTMLButtonElement> = document.querySelectorAll(".stop");
 
-const handleAudioPlay = (): void => {
-  clapAudioSound.play();
-  boomAudioSound.play();
+
+let currentChannel: string;
+
+let isRecording:boolean = false;
+
+
+
+type Channels = {
+  channel1: string[],
+  channel2: string[],
+  channel3: string[],
+  channel4: string[],
+}
+
+
+let channels:Channels = {
+  channel1: [],
+  channel2: [],
+  channel3: [],
+  channel4: [],
 };
 
 
 
-const handleAudioPlayOnKeyPress = (e: KeyboardEvent):void => {
+const handleRecordChannel = (recordBtn: HTMLButtonElement):void => {
+  currentChannel = recordBtn.id.slice(13, 14);
+  isRecording = true;
 
-  switch (e.key) {
+  recordBtn.disabled = true;
+
+  allPlayBtns.forEach((btn:any) => {
+    btn.disabled = true;
+  });
+  allRecordBtns.forEach((btn:any) => {
+    btn.disabled = true;
+  });
+  allStopBtns.forEach((btn:any) => {
+    if (btn.id.slice(11, 12) !== currentChannel) {
+      btn.disabled = true;
+    }
+  });
+};
+
+
+const handlePlayChannel = (playBtn:HTMLButtonElement): void => {
+  const selectedChannelToPlay:string = playBtn.id.slice(11, 12);
+  isRecording = false;
+  const selectedChannelArray:string[] = channels[`channel${selectedChannelToPlay}`];
+
+  playBtn.disabled = true;
+
+  selectedChannelArray.forEach((sound:string, index:number) => {
+    setTimeout(() => {
+      handleAudioPlay(sound);
+    }, 500 * index);
+  });
+
+  setTimeout(() => {
+    playBtn.disabled = false;
+  }, 510 * selectedChannelArray.length - 1);
+};
+
+const handleStopRecording = (stopBtn:HTMLButtonElement):void => {
+  const currentStopBtn:string = stopBtn.id.slice(11, 12);
+
+  allPlayBtns.forEach((btn:any) => {
+    btn.disabled = false;
+  });
+  allRecordBtns.forEach((btn:any) => {
+    if (btn.id.slice(13, 14) !== currentStopBtn) {
+      btn.disabled = false;
+    }
+  });
+  allStopBtns.forEach((btn:any) => {
+    btn.disabled = false;
+  });
+};
+
+
+allRecordBtns.forEach((recordBtn) => {
+  recordBtn.addEventListener("click", () => handleRecordChannel(recordBtn));
+});
+
+allStopBtns.forEach((stopBtn) => {
+  stopBtn.addEventListener("click", () => handleStopRecording(stopBtn));
+});
+
+allPlayBtns.forEach((playBtn) => {
+  playBtn.addEventListener("click", () => handlePlayChannel(playBtn));
+});
+
+
+const handleAudioPlay = (sound: string):void => {
+  if (isRecording) {
+    channels[`channel${currentChannel}`].push(sound);
+  }
+  switch (sound) {
     case "q":
       clapAudioSound.play();
       break;
@@ -54,6 +145,9 @@ const handleAudioPlayOnKeyPress = (e: KeyboardEvent):void => {
   }
 };
 
-clapBtn.addEventListener("click", handleAudioPlay);
+allSoundBtns.forEach((soundBtn: any) => {
+  const sound = soundBtn.innerText.slice(2, 3).toLowerCase();
+  soundBtn.addEventListener("click", () => handleAudioPlay(sound));
+});
 
-document.body.addEventListener("keypress", handleAudioPlayOnKeyPress);
+document.body.addEventListener("keypress", (e) => handleAudioPlay(e.key));

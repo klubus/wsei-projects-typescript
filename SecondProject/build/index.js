@@ -8,27 +8,11 @@ const snareAudioSound = document.querySelector(".snare");
 const tinkAudioSound = document.querySelector(".tink");
 const tomAudioSound = document.querySelector(".tom");
 
-const clapBtn = document.querySelector(".clapBtn");
-const boomBtn = document.querySelector(".boomBtn");
-const hihatBtn = document.querySelector(".hihatBtn");
-const kickBtn = document.querySelector(".kickBtn");
-const openhatBtn = document.querySelector(".openhatBtn");
-const rideBtn = document.querySelector(".rideBtn");
-const snareBtn = document.querySelector(".snareBtn");
-const tinkBtn = document.querySelector(".tinkBtn");
-const tomBtn = document.querySelector(".tomBtn");
-
-const playChannel1Btn = document.querySelector("#playChannel1Btn");
-const stopChannel1Btn = document.querySelector("#stopChannel1Btn");
-const recordChannel1Btn = document.querySelector("#recordChannel1Btn");
-const progressBar1 = document.querySelector("#progress-bar1");
-
+const allSoundBtns = document.querySelectorAll("#soundBtn");
 const allPlayBtns = document.querySelectorAll(".play");
 const allRecordBtns = document.querySelectorAll(".record");
 const allStopBtns = document.querySelectorAll(".stop");
 
-// let start = "";
-// let time = 0;
 let currentChannel;
 
 let isRecording = false;
@@ -40,11 +24,11 @@ let channels = {
   channel4: [],
 };
 
-const handleRecordChannel = (e) => {
-  currentChannel = e.target.id.slice(13, 14);
+const handleRecordChannel = (recordBtn) => {
+  currentChannel = recordBtn.id.slice(13, 14);
   isRecording = true;
 
-  e.target.disabled = true;
+  recordBtn.disabled = true;
 
   allPlayBtns.forEach((btn) => {
     btn.disabled = true;
@@ -59,20 +43,26 @@ const handleRecordChannel = (e) => {
   });
 };
 
-const handlePlayChannel = (e) => {
-  const selectedChannelToPlay = e.target.id.slice(11, 12);
+const handlePlayChannel = (playBtn) => {
+  const selectedChannelToPlay = playBtn.id.slice(11, 12);
   isRecording = false;
   const selectedChannelArray = channels[`channel${selectedChannelToPlay}`];
 
+  playBtn.disabled = true;
+
   selectedChannelArray.forEach((sound, index) => {
     setTimeout(() => {
-      handlePlaySound(sound);
+      handleAudioPlay(sound);
     }, 500 * index);
   });
+
+  setTimeout(() => {
+    playBtn.disabled = false;
+  }, 510 * selectedChannelArray.length - 1);
 };
 
-const handleStopRecording = (e) => {
-  const currentStopBtn = e.target.id.slice(11, 12);
+const handleStopRecording = (stopBtn) => {
+  const currentStopBtn = stopBtn.id.slice(11, 12);
 
   allPlayBtns.forEach((btn) => {
     btn.disabled = false;
@@ -87,86 +77,22 @@ const handleStopRecording = (e) => {
   });
 };
 
-recordChannel1Btn.addEventListener("click", handleRecordChannel);
-stopChannel1Btn.addEventListener("click", handleStopRecording);
-playChannel1Btn.addEventListener("click", handlePlayChannel);
+allRecordBtns.forEach((recordBtn) => {
+  recordBtn.addEventListener("click", () => handleRecordChannel(recordBtn));
+});
 
-const clapAudioPlay = () => {
-  clapAudioSound.play();
-};
+allStopBtns.forEach((stopBtn) => {
+  stopBtn.addEventListener("click", () => handleStopRecording(stopBtn));
+});
 
-const boomAudioPlay = () => {
-  boomAudioSound.play();
-};
+allPlayBtns.forEach((playBtn) => {
+  playBtn.addEventListener("click", () => handlePlayChannel(playBtn));
+});
 
-const hihatAudioPlay = () => {
-  hihatAudioSound.play();
-};
-
-const kickAudioPlay = () => {
-  kickAudioSound.play();
-};
-
-const openhatAudioPlay = () => {
-  openhatAudioSound.play();
-};
-
-const rideAudioPlay = () => {
-  rideAudioSound.play();
-};
-
-const snareAudioPlay = () => {
-  snareAudioSound.play();
-};
-
-const tinkAudioPlay = () => {
-  tinkAudioSound.play();
-};
-
-const tomAudioPlay = () => {
-  tomAudioSound.play();
-};
-
-const handleAudioPlayOnKeyPress = (e) => {
+const handleAudioPlay = (sound) => {
   if (isRecording) {
-    channels[`channel${currentChannel}`].push(e.key);
+    channels[`channel${currentChannel}`].push(sound);
   }
-  switch (e.key) {
-    case "q":
-      clapAudioSound.play();
-      break;
-    case "w":
-      boomAudioSound.play();
-      break;
-    case "e":
-      hihatAudioSound.play();
-      break;
-    case "a":
-      kickAudioSound.play();
-      break;
-    case "s":
-      openhatAudioSound.play();
-      break;
-    case "d":
-      rideAudioSound.play();
-      break;
-    case "z":
-      snareAudioSound.play();
-      break;
-    case "x":
-      tinkAudioSound.play();
-      break;
-    case "c":
-      tomAudioSound.play();
-      break;
-
-    default:
-      break;
-  }
-};
-
-const handlePlaySound = (sound) => {
-  console.log(sound);
   switch (sound) {
     case "q":
       clapAudioSound.play();
@@ -180,39 +106,30 @@ const handlePlaySound = (sound) => {
     case "a":
       kickAudioSound.play();
       break;
-
     case "s":
       openhatAudioSound.play();
       break;
-
     case "d":
       rideAudioSound.play();
       break;
-
     case "z":
       snareAudioSound.play();
       break;
-
     case "x":
       tinkAudioSound.play();
       break;
-
     case "c":
       tomAudioSound.play();
       break;
 
     default:
+      break;
   }
 };
 
-clapBtn.addEventListener("click", clapAudioPlay);
-boomBtn.addEventListener("click", boomAudioPlay);
-hihatBtn.addEventListener("click", hihatAudioPlay);
-kickBtn.addEventListener("click", kickAudioPlay);
-openhatBtn.addEventListener("click", openhatAudioPlay);
-rideBtn.addEventListener("click", rideAudioPlay);
-snareBtn.addEventListener("click", snareAudioPlay);
-tinkBtn.addEventListener("click", tinkAudioPlay);
-tomBtn.addEventListener("click", tomAudioPlay);
+allSoundBtns.forEach((soundBtn) => {
+  const sound = soundBtn.innerText.slice(2, 3).toLowerCase();
+  soundBtn.addEventListener("click", () => handleAudioPlay(sound));
+});
 
-document.body.addEventListener("keypress", handleAudioPlayOnKeyPress);
+document.body.addEventListener("keypress", (e) => handleAudioPlay(e.key));
