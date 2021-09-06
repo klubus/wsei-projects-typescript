@@ -1,0 +1,43 @@
+.notes_wrapper {
+  list-style: none;
+}
+
+.note_title_content_wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  position: relative;
+}
+
+.note_title_input {
+  border: none;
+  outline: none;
+  text-align: center;
+  padding-top: 6px;
+}
+
+.note_content_textarea {
+  border: none;
+  resize: none;
+  height: 100px;
+  outline: none;
+  padding: 8px 2px 5px 2px;
+}
+
+.pin_icon {
+  width: 25px;
+  position: absolute;
+  z-index: 200;
+  top: -4%;
+  left: 2%;
+}
+
+.lightgreen {
+  background-color: lightgreen;
+}
+.lightgoldenrodyellow {
+  background-color: lightgoldenrodyellow;
+}
+.lightcoral {
+  background-color: lightcoral;
+}

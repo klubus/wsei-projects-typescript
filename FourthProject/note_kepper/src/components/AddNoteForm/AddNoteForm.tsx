@@ -7,9 +7,9 @@ const AddNoteForm: FC<{ addNote: any }> = ({ addNote }) => {
       <textarea name="noteContent" />
       <label htmlFor="noteColor">Choose note color: </label>
       <select name="noteColor" id="noteColor">
-        <option value="green">Green</option>
-        <option value="yellow">Yellow</option>
-        <option value="red">Red</option>
+        <option value="lightgreen">Light green</option>
+        <option value="lightgoldenrodyellow">Light yellow</option>
+        <option value="lightcoral">Light coral</option>
       </select>
       <button type="submit">add note</button>
     </form>
