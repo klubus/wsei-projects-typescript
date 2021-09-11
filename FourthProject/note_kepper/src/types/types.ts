@@ -5,4 +5,5 @@ export type Note = {
   color: string;
   isPinned: boolean;
   date: string;
+  edited?: string
 };

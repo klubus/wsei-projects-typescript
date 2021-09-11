@@ -1,0 +1,24 @@
+.form__wrapper {
+  flex-direction: column;
+  display: flex;
+}
+
+.noteTitle__input {
+  width: 200px;
+  height: 30px;
+  outline: none;
+  margin-top: 30px;
+}
+
+.noteContent__textarea {
+  resize: none;
+  width: 200px;
+  height: 100px;
+  margin-bottom: 25px;
+  outline: none;
+}
+
+.submit__btn {
+  margin-top: 20px;
+  padding: 8px 20px;
+}

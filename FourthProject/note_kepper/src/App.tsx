@@ -7,6 +7,7 @@ import {
   addNoteToCollection,
   notesCollection,
 } from "./firebase/firestoreUtils";
+import "./App.scss"
 
 interface AppState {
   notes: Note[] | any;
@@ -66,10 +67,10 @@ class App extends Component<AppProps, AppState> {
 
   render() {
     return (
-      <>
+      <div className="app__wrapper">
         <AddNoteForm addNote={this.addNote} />
         <NotesList notes={this.state.notes} />
-      </>
+      </div>
     );
   }
 }

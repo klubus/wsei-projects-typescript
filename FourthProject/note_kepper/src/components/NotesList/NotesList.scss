@@ -1,5 +1,10 @@
 .notes_wrapper {
-  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.note_wrapper {
+  margin: 50px 30px;
 }
 
 .note_title_content_wrapper {
@@ -40,4 +45,15 @@
 }
 .lightcoral {
   background-color: lightcoral;
+}
+
+.pinNote__btn {
+  padding: 6px 12px;
+  background-color: lightblue;
+}
+
+.deleteNote__btn {
+  padding: 6px 12px;
+  margin-left: 20px;
+  background-color: indianred;
 }
