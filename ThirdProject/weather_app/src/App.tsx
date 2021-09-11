@@ -1,4 +1,4 @@
-import React, { FormEvent, FunctionComponent } from "react";
+import React, { FunctionComponent } from "react";
 import axios from "axios";
 import SearchWeatherForm from "./components/SearchWeatherForm/SearchWeatherForm";
 import { useState } from "react";
@@ -19,7 +19,7 @@ const App: FunctionComponent = () => {
 
     axios
       .get(
-        `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=95f750f0d64a8c4be9651f3606767661`
+        `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=95f750f0d64a8c4be9651f3606767661`
       )
       .then((res) => {
         const { id, name, main, sys, weather } = res.data;
