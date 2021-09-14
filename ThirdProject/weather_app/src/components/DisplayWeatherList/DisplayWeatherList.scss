@@ -1,0 +1,8 @@
+.WeatherList {
+  display: grid;
+  padding-top: 16%;
+  padding-left: 5%;
+  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-rows: 60%;
+  list-style-type: none;
+}

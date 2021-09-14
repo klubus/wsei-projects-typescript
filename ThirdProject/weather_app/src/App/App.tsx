@@ -1,11 +1,12 @@
 import React, { FunctionComponent } from "react";
 import axios from "axios";
-import SearchWeatherForm from "./components/SearchWeatherForm/SearchWeatherForm";
+import SearchWeatherForm from "../components/SearchWeatherForm/SearchWeatherForm";
 import { useState } from "react";
-import DisplayWeatherList from "./components/DisplayWeatherList/DisplayWeatherList";
-import { Weather } from "./types/types";
-import { getWeathersFromLocalStorage } from "./utils/getWeathersFromLocalStorage";
-import { setWeathersToLocalStorage } from "./utils/setWeathersToLocalStorage";
+import DisplayWeatherList from "../components/DisplayWeatherList/DisplayWeatherList";
+import { Weather } from "../types/types";
+import { getWeathersFromLocalStorage } from "../utils/getWeathersFromLocalStorage";
+import { setWeathersToLocalStorage } from "../utils/setWeathersToLocalStorage";
+import { AppWrapper } from "./StyledApp";
 
 const App: FunctionComponent = () => {
   const [weathers, setWeathers] = useState<Weather[] | []>(
@@ -19,7 +20,7 @@ const App: FunctionComponent = () => {
 
     axios
       .get(
-        `https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=95f750f0d64a8c4be9651f3606767661`
+        `http://api.openweathermap.org/data/2.5/weather?q=${cityName}&APPID=95f750f0d64a8c4be9651f3606767661`
       )
       .then((res) => {
         const { id, name, main, sys, weather } = res.data;
@@ -60,10 +61,10 @@ const App: FunctionComponent = () => {
   };
 
   return (
-    <>
+    <AppWrapper>
       <SearchWeatherForm getWeather={getWeather} />
       <DisplayWeatherList weathers={weathers} deleteWeather={deleteWeather} />
-    </>
+    </AppWrapper>
   );
 };
 

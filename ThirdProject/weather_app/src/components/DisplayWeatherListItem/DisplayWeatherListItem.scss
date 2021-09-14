@@ -1,0 +1,49 @@
+.weatherItem {
+  border: 5px solid #687a84;
+  margin-right: 25px;
+  border-radius: 80px;
+  background-color: #42a8b5;
+}
+
+.cityName {
+  padding-top: 3%;
+  text-align: center;
+}
+
+.countryName {
+  text-align: center;
+}
+
+.temp {
+  text-align: center;
+}
+
+.humidity {
+  text-align: center;
+}
+
+.weatherImage {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.weatherButton {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+  margin-bottom: 3%;
+  width: 18%;
+  border: 3px solid darkred;
+  border-radius: 14px;
+  background-color: #e60909;
+  color: white;
+  font-weight: 900;
+  font-size: large;
+}
+
+.weatherButton:hover {
+  background-color: darkred;
+  cursor: pointer;
+}
