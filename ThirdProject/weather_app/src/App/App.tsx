@@ -38,9 +38,21 @@ const App: FunctionComponent = () => {
         };
 
         const localStorageData: any = [...weathers, newWeather];
-        setWeathersToLocalStorage(localStorageData);
 
-        setWeathers([...weathers, newWeather]);
+        let isWeatherInArray;
+
+        weathers.forEach((el) => {
+          if (el.id === id) {
+            isWeatherInArray = true;
+          }
+        });
+
+        if (isWeatherInArray) {
+          setWeathers([...weathers]);
+        } else {
+          setWeathers([...weathers, newWeather]);
+          setWeathersToLocalStorage(localStorageData);
+        }
       })
       .catch((err) => {
         console.log(err);
